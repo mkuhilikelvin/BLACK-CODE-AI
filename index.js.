@@ -1,0 +1,64 @@
+
+import makeWASocket, {
+  useMultiFileAuthState,
+  DisconnectReason
+} from "@whiskeysockets/baileys";
+
+import pino from "pino";
+import readline from "readline";
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+const ask = (question) =>
+  new Promise(resolve => rl.question(question, resolve));
+
+async function startBot() {
+  const { state, saveCreds } =
+    await useMultiFileAuthState("auth_info");
+
+  const sock = makeWASocket({
+    auth: state,
+    logger: pino({ level: "silent" }),
+    browser: ["BLACK-CODE-AI", "Chrome", "1.0.0"]
+  });
+
+  if (!state.creds.registered) {
+    const number = await ask("Weka namba yako (255XXXXXXXXX): ");
+    const code = await sock.requestPairingCode(number.trim());
+    console.log("BLACK-CODE-AI PAIRING CODE:", code);
+  }
+
+  sock.ev.on("creds.update", saveCreds);
+
+  sock.ev.on("connection.update", ({ connection, lastDisconnect }) => {
+    if (connection === "open") {
+      console.log("BLACK-CODE-AI CONNECTED!");
+      rl.close();
+    }
+
+    if (connection === "close") {
+      const status = lastDisconnect?.error?.output?.statusCode;
+      if (status !== DisconnectReason.loggedOut) startBot();
+    }
+  });
+
+  sock.ev.on("messages.upsert", async ({ messages, type }) => {
+    if (type !== "notify") return;
+
+    for (const msg of messages) {
+      if (!msg.message || msg.key.fromMe) continue;
+
+      const jid = msg.key.remoteJid;
+      if (!jid || jid.endsWith("@newsletter")) continue;
+
+      await sock.sendMessage(jid, {
+        text: "BLACK-CODE-AI: Nimepokea ujumbe wako. AI inajiandaa!"
+      });
+    }
+  });
+}
+
+startBot().catch(console.error);
