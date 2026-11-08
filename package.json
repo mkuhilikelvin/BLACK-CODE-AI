@@ -1,0 +1,14 @@
+{
+  "name": "black-code-ai",
+  "version": "1.0.0",
+  "description": "BLACK-CODE-AI WhatsApp Assistant",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "latest",
+    "dotenv": "latest",
+    "pino": "latest"
+  }
+}
