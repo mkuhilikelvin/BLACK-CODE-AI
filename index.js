@@ -110,7 +110,6 @@ async function startBot() {
       if (!msg.message || msg.key.fromMe) continue;
 
       const jid = msg.key.remoteJid;
-if (jid?.endsWith("@g.us") && jid !== "120363430079008010@g.us") continue;
 if (jid?.endsWith("@g.us")) {
   console.log("GROUP ID:", jid);
 }
