@@ -1,84 +1,125 @@
 🤖 BLACK-CODE-AI
 
-An AI-powered WhatsApp Assistant
+WhatsApp AI Bot
 
-BLACK-CODE-AI is a WhatsApp bot built with Node.js, Baileys, and OpenAI API.
+Welcome to BLACK-CODE-AI! Follow these steps carefully to install and connect your bot to WhatsApp.
 
-✨ Features
+STEP 1: Install Termux Requirements
 
-- WhatsApp connection
-- AI-powered replies
-- AI ON/OFF control
-- Bot status command
-- Group message support
-
-📥 INSTALLATION GUID 💯
-
-1. Install Termux Requirements
-
-Open Termux and run:
+Open Termux and type this command:
 
 pkg update && pkg upgrade -y
-pkg install nodejs git -y
 
-2. Clone the Repository
+Press ENTER and wait until it finishes.
+
+Now type:
+
+pkg install nodejs git nano -y
+
+Press ENTER and wait for installation.
+
+STEP 2: Download BLACK-CODE-AI
+
+Copy and paste this command into Termux:
 
 git clone https://github.com/mkuhilikelvin/BLACK-CODE-AI.git
+
+Press ENTER.
+
+Now enter the bot folder:
+
 cd BLACK-CODE-AI
 
-3. Install Dependencies
+STEP 3: Install Bot Packages
+
+Type:
 
 npm install
 
-4. Configure OpenAI API Key
+Press ENTER and wait until all packages are installed.
 
-Create a ".env" file:
+STEP 4: Get Your OpenAI API Key
+
+The bot needs an OpenAI API key to answer messages using AI.
+
+1. Open this website:
+   
+   https://platform.openai.com/
+
+2. Sign in or create an account with the help of a parent or guardian if needed.
+
+3. Open the API Keys page:
+   
+   https://platform.openai.com/api-keys
+
+4. Create a new secret key.
+
+5. Give your key a name, for example "BLACK-CODE-AI".
+
+6. Generate the key.
+
+7. Copy and save it somewhere private.
+
+IMPORTANT: Never share your API key with anyone or upload it to GitHub. API usage may require separate billing.
+
+STEP 5: Add Your API Key to the Bot
+
+Go back to Termux.
+
+Make sure you are inside the BLACK-CODE-AI folder.
+
+Type:
 
 nano .env
 
-Add your own API key:
+Press ENTER.
 
-OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+Now type this line:
 
-Replace "YOUR_OPENAI_API_KEY" with your own API key.
+OPENAI_API_KEY=PASTE_YOUR_API_KEY_HERE
 
-Save the file before continuing.
+Replace "PASTE_YOUR_API_KEY_HERE" with your own API key.
 
-5. Start the Bot
+To save the file:
+
+1. Press CTRL + O.
+2. Press ENTER.
+3. Press CTRL + X.
+
+Your API key is now saved in your private ".env" file.
+
+STEP 6: Connect Your WhatsApp
+
+Start the bot:
 
 npm start
 
-Follow the instructions displayed in Termux to connect your WhatsApp account.
+Follow the connection instructions displayed in Termux.
 
-⚙️ Bot Commands
+If a pairing code is displayed, follow the WhatsApp linked-devices instructions to connect your own WhatsApp account.
 
-Command| Description
-"ai on"| Enable AI replies
-"ai off"| Disable AI replies
-"status"| Check bot status
+STEP 7: Control Your AI
 
-🔐 Security Notice
+After connecting, use these commands:
 
-- Use your own WhatsApp account or an account you have permission to connect.
-- Never share your API key.
-- Never upload your ".env" file.
-- Keep WhatsApp authentication files private.
-- Avoid spam and unwanted messages.
+Command| Function
+"ai on"| Turn AI ON
+"ai off"| Turn AI OFF
+"status"| Check AI status
 
-⚠️ Requirements
+🔐 SECURITY RULES
 
-- Android device
-- Termux
-- Node.js
-- Internet connection
-- OpenAI API key
+- Use your own WhatsApp account or one you have permission to connect.
+- Use your own API key.
+- Never share your ".env" file.
+- Never share your WhatsApp session files.
+- Do not use the bot for spam or unwanted messages.
 
-👨‍💻 Developer
+👨‍💻 DEVELOPER
 
 BLACK-CODE-AI
 
-GitHub Repository:
-
+GitHub:
 https://github.com/mkuhilikelvin/BLACK-CODE-AI
 
-Thank you for using BLACK-CODE-AI! 🚀# BLACK-CODE-AI
+Thank you for choosing BLACK-CODE-AI! 🚀
